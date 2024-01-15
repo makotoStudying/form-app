@@ -40,6 +40,7 @@ export default function Home() {
                 type="email"
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
+                required={true}
               />
               <button type="submit">next</button>
             </Form>
