@@ -83,7 +83,7 @@ export default function Home() {
                   }
                 }}
               >
-                send
+                submit
               </button>
             </div>
           </div>
