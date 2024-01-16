@@ -10,7 +10,6 @@ export default function Page() {
 
   const action = async () => {
     await fetchForm(data);
-    setData({ firstName: "", lastName: "", email: "" });
     router.push("/form/thanks");
   };
 
