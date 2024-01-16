@@ -1,15 +1,11 @@
-"use client";
-import { createContext, useState } from "react";
-
-export const DataContext = createContext({});
+import DataProvider from "../context/dataContext";
 
 export default function Layout({ children }) {
-  const [data, setData] = useState({ firstName: "", lastName: "", email: "" });
   return (
-    <DataContext.Provider value={{ data, setData }}>
+    <DataProvider>
       <main>
         <div>{children}</div>
       </main>
-    </DataContext.Provider>
+    </DataProvider>
   );
 }

@@ -1,12 +1,11 @@
 "use client";
-import { useContext } from "react";
 import { useRouter } from "next/navigation";
-import { DataContext } from "../layout";
+import { useDataContext } from "../../context/dataContext";
 import InputForm from "../../ui/inputForm";
 
 export default function Page() {
   const router = useRouter();
-  const { data, setData } = useContext(DataContext);
+  const { data, setData } = useDataContext();
 
   const handleChange = (e) => {
     const id = e.target.id;
