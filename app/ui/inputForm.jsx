@@ -2,10 +2,10 @@
 
 import InputText from "./component/inputText";
 
-export const InputForm = ({ data, onSubmit, onChange }) => (
-  <form onSubmit={onSubmit}>
+export const InputForm = ({ key, data, onSubmit, onChange }) => (
+  <form key={key} onSubmit={onSubmit}>
     <InputText
-      label="First Name"
+      label="firstName"
       id="firstName"
       type="text"
       value={data.firstName}
@@ -14,7 +14,7 @@ export const InputForm = ({ data, onSubmit, onChange }) => (
       maxLength={10}
     />
     <InputText
-      label="Last Name"
+      label="lastName"
       id="lastName"
       type="text"
       value={data.lastName}
@@ -23,7 +23,7 @@ export const InputForm = ({ data, onSubmit, onChange }) => (
       maxLength={10}
     />
     <InputText
-      label="e-mail"
+      label="email"
       id="email"
       type="email"
       value={data.email}

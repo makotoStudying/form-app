@@ -1,17 +1,17 @@
 "use client";
 
-export const Confirm = ({ data, handleClickPrev, handleClickSubmit }) => (
-  <div>
-    {Object.keys(data).map((id) => (
-      <p key={id}>{data[id]}</p>
-    ))}
-    <button type="button" onClick={handleClickPrev}>
-      prev
-    </button>
-    <button type="button" onClick={handleClickSubmit}>
-      submit
-    </button>
-  </div>
-);
-
-export default Confirm;
+export default function Confirm({ key, data, action, handleClickBack }) {
+  return (
+    <form key={key} action={action}>
+      {Object.keys(data).map((key) => (
+        <p key={key}>
+          {key}: {data[key]}
+        </p>
+      ))}
+      <button type="button" onClick={handleClickBack}>
+        Back
+      </button>
+      <button type="submit">Submit</button>
+    </form>
+  );
+}
