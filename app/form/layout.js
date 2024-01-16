@@ -1,11 +1,7 @@
 "use client";
-import { createContext, useContext, useState } from "react";
+import { createContext, useState } from "react";
 
-const DataContext = createContext({});
-
-export function useDataContext() {
-  return useContext(DataContext);
-}
+export const DataContext = createContext({});
 
 export default function Layout({ children }) {
   const [data, setData] = useState({ firstName: "", lastName: "", email: "" });
