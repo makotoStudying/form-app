@@ -1,103 +1,65 @@
 "use client";
 import { useState } from "react";
-import Form from "./ui/form";
-import Input from "./ui/input";
-import { checkForm, fetchInputForm } from "./lib/actions";
+import { fetchForm } from "./lib/actions";
+import InputForm from "./ui/inputForm";
+import Confirm from "./ui/confirm";
+import Thanks from "./ui/thanks";
 
 export default function Home() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [email, setEmail] = useState("");
-  const [status, setStatus] = useState("inputPage");
+  const [status, setStatus] = useState("input");
+  const [data, setData] = useState({ firstName: "", lastName: "", email: "" });
 
-  switch (status) {
-    case "inputPage":
-      return (
-        <main>
-          <div>
-            <Form action={checkForm}>
-              <Input
-                label="First Name"
-                id="firstName"
-                type="text"
-                value={firstName}
-                onChange={(e) => setFirstName(e.target.value)}
-                required={true}
-                maxLength={10}
-              />
-              <Input
-                label="Last Name"
-                id="lastName"
-                type="text"
-                value={lastName}
-                onChange={(e) => setLastName(e.target.value)}
-                required={true}
-                maxLength={10}
-              />
-              <Input
-                label="e-mail"
-                id="email"
-                type="email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                required={true}
-              />
-              <button type="submit">next</button>
-            </Form>
-          </div>
-        </main>
-      );
+  const handleChange = (e) => {
+    const id = e.target.id;
+    switch (id) {
+      case "firstName":
+        setData({ ...data, firstName: e.target.value });
+        return;
+      case "lastName":
+        setData({ ...data, lastName: e.target.value });
+        return;
+      case "email":
+        setData({ ...data, email: e.target.value });
+        return;
+    }
+  };
 
-    case "confirmPage":
-      return (
-        <main>
-          <div>
-            <div>
-              <p>First Name: {firstName}</p>
-              <p>Last Name: {lastName}</p>
-              <p>e-mail: {email}</p>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setStatus("inputPage");
-                }}
-              ></button>
-              <button
-                type="button"
-                onClick={(e) => {
-                  e.preventDefault();
-                  setStatus("inputPage");
-                }}
-              >
-                prev
-              </button>
-              <button
-                type="button"
-                onClick={async (e) => {
-                  e.preventDefault();
-                  try {
-                    await fetchInputForm();
-                    setStatus("thanksPage");
-                  } catch (err) {
-                    console.error(err);
-                  }
-                }}
-              >
-                submit
-              </button>
-            </div>
-          </div>
-        </main>
-      );
+  //status==="input"でのフォームサブミット時の動作
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setStatus("confirm");
+  };
+  //status==="confirm"での戻るボタンクリックのイベントハンドラ
+  const handleClickPrev = (e) => {
+    e.preventDefault();
+    setStatus("input");
+  };
+  //status==="confirm"での送信ボタンクリックのイベントハンドラ
+  const handleClickSubmit = async (e) => {
+    e.preventDefault();
+    await fetchForm(data);
+    setStatus("thanks");
+  };
 
-    case "thanksPage":
-      return (
-        <main>
-          <div>
-            <p>Thank you!</p>
-          </div>
-        </main>
-      );
-  }
+  return (
+    <main>
+      <div>
+        {status === "input" && (
+          <InputForm
+            data={data}
+            onSubmit={handleSubmit}
+            onChange={handleChange}
+          />
+        )}
+        {status === "confirm" && (
+          <Confirm
+            data={data}
+            handleClickPrev={handleClickPrev}
+            handleClickSubmit={handleClickSubmit}
+          />
+        )}
+        {status === "thanks" && <Thanks />}
+      </div>
+    </main>
+  );
 }
