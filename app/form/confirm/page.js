@@ -1,3 +1,4 @@
+"use client";
 import { useRouter } from "next/navigation";
 import { useDataContext } from "../../context/dataContext";
 import Confirm from "../../ui/confirm";
