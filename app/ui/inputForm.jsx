@@ -2,8 +2,8 @@
 
 import InputText from "./component/inputText";
 
-export const InputForm = ({ key, data, onSubmit, onChange }) => (
-  <form key={key} onSubmit={onSubmit}>
+export const InputForm = ({ data, onSubmit, onChange }) => (
+  <form onSubmit={onSubmit}>
     <InputText
       label="firstName"
       id="firstName"

@@ -24,7 +24,6 @@ export default function Page() {
 
   return (
     <InputForm
-      key="input"
       data={data}
       onSubmit={(e) => {
         e.preventDefault();

@@ -1,8 +1,8 @@
 "use client";
 
-export default function Confirm({ key, data, action, handleClickBack }) {
+export default function Confirm({ data, action, handleClickBack }) {
   return (
-    <form key={key} action={action}>
+    <form action={action}>
       {Object.keys(data).map((key) => (
         <p key={key}>
           {key}: {data[key]}
