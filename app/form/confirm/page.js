@@ -16,7 +16,7 @@ export default function Page() {
     <Confirm
       key="confirm"
       data={data}
-      onSubmit={action}
+      action={action}
       handleClickBack={() => router.push("/form/input")}
     />
   );
