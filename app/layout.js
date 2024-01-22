@@ -5,7 +5,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "form test",
-  description: "確認画面をつけたフォーム",
+  description: "フォームの取り扱い勉強",
 };
 
 export default function RootLayout({ children }) {
