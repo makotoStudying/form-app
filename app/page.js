@@ -4,7 +4,9 @@ export default function Home() {
   return (
     <main>
       <div>
-        <Link href="/form">フォーム</Link>
+        <Link href="/form">
+          <button type="button">フォーム</button>
+        </Link>
       </div>
     </main>
   );
