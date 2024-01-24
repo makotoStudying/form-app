@@ -1,10 +1,10 @@
-import { createUser } from "@/lib/actions";
+import { postContactForm } from "@/lib/actions";
 
 export default function Form() {
   return (
     <main>
       <h2> お問い合わせフォーム </h2>
-      <form action={createUser}>
+      <form action={postContactForm}>
         <div>
           <div>
             <label htmlFor="name"> お名前 </label>

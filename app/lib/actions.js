@@ -4,7 +4,7 @@ import { z } from "zod";
 import { redirect } from "next/navigation";
 import { Resend } from "resend";
 
-const userSchema = z.object({
+const contactFormSchema = z.object({
   name: z.string(),
   email: z.string().email(),
   content: z.string(),
@@ -12,9 +12,9 @@ const userSchema = z.object({
 
 const resend = new Resend(process.env.Resend_API_KEY);
 
-export async function createUser(formData) {
+export async function postContactForm(formData) {
   try {
-    const { name, email, content } = userSchema.parse({
+    const { name, email, content } = contactFormSchema.parse({
       name: formData.get("name"),
       email: formData.get("email"),
       content: formData.get("content"),
