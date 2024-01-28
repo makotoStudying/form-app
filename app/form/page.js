@@ -1,41 +1,64 @@
 import { postContactForm } from "@/lib/actions";
+import * as React from "react";
+import Typography from "@mui/material/Typography";
+import Box from "@mui/material/Box";
+import TextField from "@mui/material/TextField";
+import Button from "@mui/material/Button";
 
 export default function Form() {
   return (
-    <main>
-      <h2> お問い合わせフォーム </h2>
-      <form action={postContactForm}>
-        <div>
-          <div>
-            <label htmlFor="name"> お名前 </label>
-          </div>
-          <div>
-            <input id="name" name="name" type="text" placeholder="田中 太郎" />
-          </div>
-        </div>
-        <div>
-          <div>
-            <label htmlFor="email">メールアドレス</label>
-          </div>
-          <div>
-            <input
+    <>
+      <Box
+        sx={{
+          my: 4,
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
+          Contact
+        </Typography>
+
+        <form action={postContactForm}>
+          <Box
+            sx={{
+              display: "flex",
+              flexDirection: "column",
+              justifyContent: "center",
+              alignItems: "center",
+              "& .MuiTextField-root": { m: 2, width: "30ch" },
+            }}
+          >
+            <TextField
+              id="name"
+              name="name"
+              type="text"
+              label="名前"
+              required
+            />
+            <TextField
               id="email"
               name="email"
               type="email"
-              placeholder="xxx@example.com"
+              label="e-mail"
+              required
             />
-          </div>
-        </div>
-        <div>
-          <div>
-            <label htmlFor="content">お問い合わせ内容</label>
-          </div>
-          <div>
-            <textarea id="content" name="content" rows="5" placeholder="内容" />
-          </div>
-        </div>
-        <button type="submit">submit</button>
-      </form>
-    </main>
+            <TextField
+              id="content"
+              name="content"
+              label="お問い合わせ内容"
+              multiline
+              rows={4}
+              required
+            />
+            <Button variant="contained" type="submit">
+              送信する
+            </Button>
+          </Box>
+        </form>
+      </Box>
+    </>
   );
 }
