@@ -14,7 +14,7 @@ export default function Home() {
       }}
     >
       <Typography variant="h5" component="h1" sx={{ mb: 2 }}>
-        Mako&apos;s Blog Contact Form
+        Mako&apos;s blog Contact Form
       </Typography>
       <Button variant="outlined" href="/form">
         Contact form

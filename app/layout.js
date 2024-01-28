@@ -5,8 +5,8 @@ import Container from "@mui/material/Container";
 import theme from "@/theme";
 
 export const metadata = {
-  title: "form test",
-  description: "フォームの取り扱い勉強",
+  title: "Contact | Mako's blog",
+  description: "Mako's blogのContactページです",
 };
 
 export default function RootLayout({ children }) {
